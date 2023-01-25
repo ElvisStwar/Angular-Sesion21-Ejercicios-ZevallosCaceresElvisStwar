@@ -1,6 +1,6 @@
 <div class="p-5">
     <div class="row justify-content-center">
-        <div class="border rounded-4 p-5 col-sm-8 col-10 col-md-5">
+        <div class="border rounded-5 mx-auto p-5" style="width: 400px;" >
             <div class="row g-2">
                 <h1 class="text-center">Login</h1>
                 <form [formGroup]="formLogin" (submit)="send()">
@@ -10,7 +10,7 @@
                     </div>
                     <div class="">
                         <label for="" class="h4">Password</label>
-                        <input type="password" formControlName="password" class="form-control mb-2">
+                        <input type="password" formControlName="password" class="form-control mb-2" [(ngModel)]="password">
                     </div>
                     <div>
                         <button class="btn btn-primary" [disabled]="formLogin.invalid">Submit</button>

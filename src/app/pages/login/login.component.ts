@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -10,10 +11,11 @@ export class LoginComponent implements OnInit{
 
   email!:string;
   password!:string;
-  mensajeCorrecto=false
+  mensajeCorrecto=false;
   mensajeIncorrecto=false
 
   public formLogin!: FormGroup;
+  static mensajeCorrecto: any;
 
   constructor(private formBuilder:FormBuilder){
 
@@ -36,12 +38,19 @@ export class LoginComponent implements OnInit{
   CamposCorrectos = false;
   send():any{
     this.CamposCorrectos = this.formLogin.valid;
-    if(this.email=="AD"||this.password=="123456"){
+    if(this.email=="AD" && this.password=="123456"){
       this.mensajeCorrecto=true;
       this.mensajeIncorrecto=false;
+      
     }else{
       this.mensajeIncorrecto=true;
       this.mensajeCorrecto=false;
     }
+
+    localStorage.setItem('email', this.email);
+    localStorage.setItem('password', this.password);
+    
   }
+
+
 }
